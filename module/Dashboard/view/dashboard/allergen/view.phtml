@@ -1,0 +1,74 @@
+<?php
+$this->headTitle($this->title);
+
+$this->mainMenu()->setActiveItemId('dashboard');
+
+$this->pageBreadcrumbs()->setItems([
+    'Dashboard' => $this->url('dashboard'),
+    'Allergens' => $this->url('allergen'),
+    'View' => ''
+]);
+
+$form->get('id')->setAttributes([
+    'class'=>'form-control',
+]);
+$form->get('name')->setAttributes([
+    'class'=>'form-control',
+]);
+$form->get('type')->setAttributes([
+    'class'=>'form-control',
+]);
+$form->get('regions')->setAttributes([
+    'class'=>'form-control',
+]);
+$form->get('season')->setAttributes([
+    'class'=>'form-control',
+]);
+
+$form->get('submit')->setAttributes(array('class'=>'btn btn-primary'));
+
+$form->prepare();
+?>
+
+<h1><?php echo $this->title ?></h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <?= $this->form()->openTag($form); ?>
+
+        <div class="form-group">
+            <?= $this->formLabel($form->get('id')); ?>
+            <?= $this->formElement($form->get('id')); ?>
+        </div>
+
+        <div class="form-group">
+            <?= $this->formLabel($form->get('name')); ?>
+            <?= $this->formElement($form->get('name')); ?>
+            <?= $this->formElementErrors($form->get('name')); ?>
+        </div>
+
+        <div class="form-group">
+            <?= $this->formLabel($form->get('type')); ?>
+            <?= $this->formElement($form->get('type')); ?>
+            <?= $this->formElementErrors($form->get('type')); ?>
+        </div>
+
+        <div class="form-group">
+            <?= $this->formLabel($form->get('regions')); ?>
+            <?= $this->formElement($form->get('regions')); ?>
+            <?= $this->formElementErrors($form->get('regions')); ?>
+        </div>
+
+        <div class="form-group">
+            <?= $this->formLabel($form->get('season')); ?>
+            <?= $this->formElement($form->get('season')); ?>
+            <?= $this->formElementErrors($form->get('season')); ?>
+        </div>
+
+        <div class="form-group">
+            <?= $this->formElement($form->get('submit')); ?>
+        </div>
+
+        <?= $this->form()->closeTag(); ?>
+    </div>
+</div>

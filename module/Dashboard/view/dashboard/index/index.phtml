@@ -1,0 +1,26 @@
+<?php
+$this->headTitle('Home');
+
+$this->mainMenu()->setActiveItemId('index');
+
+$this->pageBreadcrumbs()->setItems([
+            'Home' => $this->url('home')
+]);
+?>
+
+<style>
+    td { padding: 5px}
+</style>
+<h1>Welcome</h1>
+
+<p>
+    This is the Dashboard Home page.
+</p>
+
+<?php if($this->isLogged) { ?>
+<h2><a href="<?= $this->url('dashboard',['action' => 'index']) ?>" >Dashboard</a></h2>
+<?php } else { ?>
+<h2><a href="<?= $this->url('login',['action' => 'index']) ?>" >Login</a></h2>
+<?php } ?>
+
+

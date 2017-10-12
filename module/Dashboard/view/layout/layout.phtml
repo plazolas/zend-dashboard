@@ -1,0 +1,160 @@
+<?= $this->doctype(); ?>
+<?php
+// gets view variables from controller
+$children = $this->viewModel()->getCurrent()->getChildren();
+$view_vars = $children[0]->getVariables();
+$template = $children[0]->getTemplate();
+$isLogged = (!empty($view_vars['isLogged'])) ? 'yes' : 'no';
+?>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <?= $this->headTitle('ZF3')->setSeparator(' - ')->setAutoEscape(false) ?>
+
+    <?=
+    $this->headMeta()
+        ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+        ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+    ?>
+
+    <!-- Le styles -->
+    <?=
+    $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'])
+        ->prependStylesheet($this->basePath('css/style.css'))
+        ->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
+        ->prependStylesheet($this->basePath('css/bootstrap.min.css'))
+        ->prependStylesheet($this->basePath('css/halflings.css'))
+
+    ?>
+
+    <!-- Scripts -->
+    <?=
+    $this->headScript()
+        ->prependFile($this->basePath('js/bootstrap.min.js'))
+        ->prependFile($this->basePath('js/jquery-2.2.4.min.js'))
+    ?>
+</head>
+<body>
+<div class="container">
+    <div class="row text-left">
+        <h1><img src="<?php echo $this->basePath() . '/img/logo.png'; ?>"> <span style="color: rgb(87,158,70);font-size: 64px"><b>ENGINEERING</b></span></h1>
+    </div>
+<!-- Navigation as View Helper -->
+<div class="row">
+    <?php
+
+    // Initialize navbar items
+    $this->mainMenu()->setItems([
+        [
+            'id' => 'home',
+            'label' => 'Home',
+            'link' => $this->url('home')
+        ],
+    ]);
+
+    if ($isLogged == 'no') {
+        $this->mainMenu()->addItem(
+            [
+                'id' => 'login',
+                'label' => 'Login',
+                'link' => $this->url('login')
+            ]
+        );
+    } else {
+        $this->mainMenu()->addItem(
+            [
+                'id' => 'logout',
+                'label' => 'Logout',
+                'link' => $this->url('login', ['action' => 'logout'])
+            ]);
+        $this->mainMenu()->addItem(
+            [
+                'id' => 'dashboard',
+                'label' => 'Dashboard',
+                'dropdown' => [
+                    [
+                        'id' => 'users',
+                        'label' => 'Users',
+                        'link' => $this->url('user', ['action' => 'index'])
+                    ],
+                    [
+                        'id' => 'allergen',
+                        'label' => 'Allergens',
+                        'link' => $this->url('allergen', ['action' => 'index'])
+                    ],
+                    [
+                        'id' => 'learning-centers',
+                        'label' => 'Learning Centers',
+                        'link' => $this->url('learning', ['action' => 'index'])
+                    ],
+                ]
+            ]);
+    }
+
+    // Check if the activeMenuItemId passed to layout view model
+    // and if so, use it for setting active navbar item.
+    if (isset($activeMenuItemId)) {
+        $this->mainMenu()->setActiveItemId($activeMenuItemId);
+    }
+    //var_dump(get_object_vars($this->mainMenu()->activeItemId)); // FATAL ERROR cannor acess protected propert
+
+    // Render the navbar
+    echo $this->mainMenu()->render();
+    ?>
+</div>
+    <!-- ZEND BREADCRUM div class="row">
+        <div class="col-md-12">
+            <?php // $this->navigation('navigation')->breadcrumbs()->setMinDepth(0)->setMaxDepth(1); ?>
+        </div>
+    </div-->
+<div class="row">
+    <div class="col-md-12">
+        <!-- Breadcrumbs as View Helper -->
+        <?= $this->pageBreadcrumbs()->render(); ?>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <!-- Page content placeholder -->
+        <?= $this->content; ?>
+    </div>
+</div>
+<hr>
+<footer>
+    <p>&copy; 2005 - <?= date('Y') ?> by Oz Engineering. All rights reserved.</p>
+</footer>
+</div>
+<?= $this->inlineScript() ?>
+<?php if ($_ENV['env'] == 'dev') { ?>
+    <?php
+    if (isset($_SESSION)) {
+        echo 'SESSION:<br>';
+        var_dump($_SESSION);
+        echo '<hr>';
+    }
+    ?>
+    <?php echo 'COOKIE:<br>';
+    var_dump($_COOKIE);
+    echo '<hr>' ?>
+    <?php echo 'GET:<br>';
+    var_dump($_GET);
+    echo '<hr>' ?>
+    <?php echo 'POST:<br>';
+    var_dump($_POST);
+    echo '<hr>' ?>
+    <?php echo 'REQUEST:<br>';
+    var_dump($_REQUEST);
+    echo '<hr>' ?>
+    <?php echo 'ENV:<br>';
+    var_dump($_ENV);
+    echo '<hr>' ?>
+    <?php echo 'FILE:<br>';
+    var_dump($_FILES);
+    echo '<hr>' ?>
+    <?php echo 'SERVER:<br>';
+    var_dump($_SERVER);
+    echo '<hr>';
+}
+?>
+</body>
+</html>

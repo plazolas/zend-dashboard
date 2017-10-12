@@ -1,0 +1,92 @@
+<?php
+$this->headTitle('View User');
+
+$this->mainMenu()->setActiveItemId('dashboard');
+
+$this->pageBreadcrumbs()->setItems([
+    'Dashboard' => $this->url('dashboard'),
+    'Users' => $this->url('user'),
+    'View' => ''
+]);
+
+$form->get('id')->setAttributes([
+    'class'=>'form-control',
+]);
+$form->get('user')->setAttributes([
+    'class'=>'form-control',
+]);
+$form->get('email')->setAttributes([
+    'class'=>'form-control',
+]);
+$form->get('password')->setAttributes([
+    'class'=>'form-control',
+]);
+$form->get('name')->setAttributes([
+    'class'=>'form-control',
+]);
+$form->get('role')->setAttributes([
+    'class'=>'form-control',
+]);
+$form->get('pid')->setAttributes([
+    'class'=>'form-control',
+]);
+
+$form->get('submit')->setAttributes(array('class'=>'btn btn-primary'));
+
+$form->prepare();
+?>
+
+<h1>User Edit</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <?= $this->form()->openTag($form); ?>
+
+        <div class="form-group">
+            <?= $this->formLabel($form->get('id')); ?>
+            <?= $this->formElement($form->get('id')); ?>
+        </div>
+
+        <div class="form-group">
+            <?= $this->formLabel($form->get('user')); ?>
+            <?= $this->formElement($form->get('user')); ?>
+            <?= $this->formElementErrors($form->get('user')); ?>
+        </div>
+
+        <div class="form-group">
+            <?= $this->formLabel($form->get('email')); ?>
+            <?= $this->formElement($form->get('email')); ?>
+            <?= $this->formElementErrors($form->get('email')); ?>
+        </div>
+
+        <div class="form-group">
+            <?= $this->formLabel($form->get('password')); ?>
+            <?= $this->formElement($form->get('password')); ?>
+            <?= $this->formElementErrors($form->get('password')); ?>
+        </div>
+
+        <div class="form-group">
+            <?= $this->formLabel($form->get('name')); ?>
+            <?= $this->formElement($form->get('name')); ?>
+            <?= $this->formElementErrors($form->get('name')); ?>
+        </div>
+
+        <div class="form-group">
+            <?= $this->formLabel($form->get('role')); ?>
+            <?= $this->formElement($form->get('role')); ?>
+            <?= $this->formElementErrors($form->get('role')); ?>
+        </div>
+
+        <div class="form-group">
+            <?= $this->formLabel($form->get('pid')); ?>
+            <?= $this->formElement($form->get('pid')); ?>
+            <?= $this->formElementErrors($form->get('pid')); ?>
+        </div>
+
+        <div class="form-group">
+            <?= $this->formElement($form->get('submit')); ?>
+        </div>
+
+        <?= $this->form()->closeTag(); ?>
+    </div>
+</div>

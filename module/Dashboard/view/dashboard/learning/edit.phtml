@@ -1,0 +1,131 @@
+<?php
+$this->headTitle($this->title);
+
+$this->mainMenu()->setActiveItemId('dashboard');
+
+$this->pageBreadcrumbs()->setItems([
+    'Dashboard' => $this->url('dashboard'),
+    'Learning Centers' => $this->url('learning'),
+    'Edit' => ''
+]);
+
+$form->get('id')->setAttributes([
+    'class'=>'form-control',
+]);
+$form->get('name')->setAttributes([
+    'class'=>'form-control',
+]);
+$form->get('contact')->setAttributes([
+    'class'=>'form-control',
+]);
+$form->get('email')->setAttributes([
+    'class'=>'form-control',
+]);
+$form->get('address')->setAttributes([
+    'class'=>'form-control',
+]);
+$form->get('address2')->setAttributes([
+    'class'=>'form-control',
+]);
+$form->get('city')->setAttributes([
+    'class'=>'form-control',
+]);
+$form->get('state')->setAttributes([
+    'class'=>'form-control',
+]);
+$form->get('zip')->setAttributes([
+    'class'=>'form-control',
+]);
+$form->get('phone')->setAttributes([
+    'class'=>'form-control',
+]);
+$form->get('region')->setAttributes([
+    'class'=>'form-control',
+]);
+
+
+$form->get('submit')->setAttributes(array('class'=>'btn btn-primary'));
+
+$form->prepare();
+?>
+
+<h1><?php echo $this->title ?></h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <?= $this->form()->openTag($form); ?>
+
+        <div class="form-group">
+            <?= $this->formLabel($form->get('id')); ?>
+            <?= $this->formElement($form->get('id')); ?>
+        </div>
+
+        <div class="form-group">
+            <?= $this->formLabel($form->get('name')); ?>
+            <?= $this->formElement($form->get('name')); ?>
+            <?= $this->formElementErrors($form->get('name')); ?>
+        </div>
+
+        <div class="form-group">
+            <?= $this->formLabel($form->get('contact')); ?>
+            <?= $this->formElement($form->get('contact')); ?>
+            <?= $this->formElementErrors($form->get('contact')); ?>
+        </div>
+
+        <div class="form-group">
+            <?= $this->formLabel($form->get('email')); ?>
+            <?= $this->formElement($form->get('email')); ?>
+            <?= $this->formElementErrors($form->get('email')); ?>
+        </div>
+
+        <div class="form-group">
+            <?= $this->formLabel($form->get('address')); ?>
+            <?= $this->formElement($form->get('address')); ?>
+            <?= $this->formElementErrors($form->get('address')); ?>
+        </div>
+
+        <div class="form-group">
+            <?= $this->formLabel($form->get('address2')); ?>
+            <?= $this->formElement($form->get('address2')); ?>
+            <?= $this->formElementErrors($form->get('address2')); ?>
+        </div>
+
+        <div class="form-group">
+            <?= $this->formLabel($form->get('city')); ?>
+            <?= $this->formElement($form->get('city')); ?>
+            <?= $this->formElementErrors($form->get('city')); ?>
+        </div>
+
+        <div class="form-group">
+            <?= $this->formLabel($form->get('state')); ?>
+            <?= $this->formElement($form->get('state')); ?>
+            <?= $this->formElementErrors($form->get('state')); ?>
+        </div>
+
+        <div class="form-group">
+            <?= $this->formLabel($form->get('zip')); ?>
+            <?= $this->formElement($form->get('zip')); ?>
+            <?= $this->formElementErrors($form->get('zip')); ?>
+        </div>
+
+        <div class="form-group">
+            <?= $this->formLabel($form->get('phone')); ?>
+            <?= $this->formElement($form->get('phone')); ?>
+            <?= $this->formElementErrors($form->get('phone')); ?>
+        </div>
+
+        <div class="form-group">
+            <?= $this->formLabel($form->get('region')); ?>
+            <?= $this->formElement($form->get('region')); ?>
+            <?= $this->formElementErrors($form->get('region')); ?>
+        </div>
+
+        <div class="form-group">
+            <?= $this->formElement($form->get('submit')); ?>
+        </div>
+
+        <?= $this->formElement($form->get('csrf')); ?>
+
+        <?= $this->form()->closeTag(); ?>
+    </div>
+</div>

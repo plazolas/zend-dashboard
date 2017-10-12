@@ -1,0 +1,24 @@
+<?php
+$this->headTitle('Dashboard');
+
+$this->mainMenu()->setActiveItemId('dashboard');
+
+$this->pageBreadcrumbs()->setItems([
+    'Dashboard' => $this->url('dashboard')
+]);
+?>
+<div class="row">
+    <div class="col-lg-4 col-md-6 col-xs-12 offset-lg-6 offset-md-4">
+
+        <div class="list-group">
+            <a class="list-group-item list-group-item-action" href="<?= $this->url('user', ['action' => 'index']) ?>"><i
+                        class="glyphicon glyphicon-user"></i> Users</a>
+            <a class="list-group-item list-group-item-action"
+               href="<?= $this->url('learning', ['action' => 'index']) ?>"><i class="glyphicon glyphicon-education"></i>
+                Leaning Centers</a>
+            <a class="list-group-item list-group-item-action"
+               href="<?= $this->url('allergen', ['action' => 'index']) ?>"><i
+                        class="glyphicon glyphicon-tree-deciduous"></i> Allergens</a>
+        </div>
+    </div>
+</div>

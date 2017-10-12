@@ -1,0 +1,24 @@
+<?php
+$this->headTitle('Dashboard');
+
+$this->mainMenu()->setActiveItemId('home');
+
+$this->pageBreadcrumbs()->setItems([
+    'Home'=>$this->url('home'),
+    'Logout'=> $this->url('login', ['action' => 'logout']),
+    'Dashboard'=> ''
+]);
+?>
+
+<h1>User Dashboard</h1>
+
+<p>Welcome.</p>
+
+<pre>
+    <?php
+var_dump($result);var_dump($session);
+    ?>
+</pre>
+<div>
+    <h1>You are logged in</h1>
+</div>

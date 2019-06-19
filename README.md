@@ -8,7 +8,7 @@ a starting point for a Zend Framework Dashboard Application using Apache and MyS
 
 Adds new Module Dashboard to the skeleton application.
 
-Main Features:
+Main Features :
 
 * Responsive Design with Bootstrap.
 
